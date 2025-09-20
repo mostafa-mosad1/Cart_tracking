@@ -68,7 +68,7 @@ app.post("/exit-cart", (req, res) => {
 );
 
     }
-  }, 3000); 
+  }, 3000);    
 
   res.json({ ok: true, message: "Cart tracking on exit started" });
 });
