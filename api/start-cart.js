@@ -13,7 +13,7 @@ export default async function handler(req, res) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ chat_id: process.env.CHAT_ID, text }),
     });
-  }, 60 * 1000); // دقيقة للتجربة، لاحقًا ممكن 30 دقيقة
+  }, 6 * 100); // دقيقة للتجربة، لاحقًا ممكن 30 دقيقة
 
   res.json({ ok: true, message: "Cart tracking started" });
 }
