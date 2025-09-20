@@ -4,6 +4,7 @@ export default async function handler(req, res) {
   const { userId, products } = req.body;
   if (!userId || !products) return res.status(400).json({ ok: false, message: "Missing data" });
 
+  // التذكير بعد 30 دقيقة (1800000 ms)
   setTimeout(async () => {
     const checkoutLink = `${process.env.FRONT_URL}/checkout?user=${userId}`;
     const text = `🔔 Reminder: Products in cart:\n${products.join("\n")}\n\n➡️ Complete checkout: ${checkoutLink}`;
@@ -13,7 +14,7 @@ export default async function handler(req, res) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ chat_id: process.env.CHAT_ID, text }),
     });
-  }, 6 * 100); // دقيقة للتجربة، لاحقًا ممكن 30 دقيقة
+  }, 600);
 
   res.json({ ok: true, message: "Cart tracking started" });
 }
